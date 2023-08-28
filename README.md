@@ -35,7 +35,7 @@ Nostr-Stealth is a cutting-edge encryption method built on top of the Nostr prot
 ## Usage
 
 1. **Set Up Channel**:
-   - The channel is a valid public key. Create a pair of valid keys and update .env (CHANPRIV is optional, because it can't decrypt de messages)
+   - The channel is a valid public key. Create a pair of valid keys and update .env (CHANPRIV is optional, because it can't decrypt messages)
 
 2. **Sending Messages**:
    - $ node publish.js "your-message"
