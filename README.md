@@ -1,4 +1,4 @@
-# Nostr-Stealth
+# Nostr-Stealth (proof-of-concept)
 
 ## Introduction
 
