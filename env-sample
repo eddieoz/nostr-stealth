@@ -4,5 +4,5 @@ SPUB=""
 RPRIV=""
 RPUB=""
 
-CHANPRIV=""
+CHANPRIV="(optional)"
 CHANPUB=""
