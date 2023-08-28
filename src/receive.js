@@ -66,6 +66,8 @@ await relay.connect()
 let receiverPrivkey = process.env.RPRIV
 let receiverPubkey = getPublicKey(receiverPrivkey)
 
+let senderPubkey = process.env.SPUB
+
 // channel pubkey
 let channelPubkey = process.env.CHANPUB
 
@@ -87,9 +89,9 @@ sub.on('eose', () => {
 
 // decrypt message
 async function decryptMessage(event){
-    // Friends Pubs
+    // Friends Pubs ([] of pubkeys of each friend you are communicating)
     let registeredSenderPubs = [
-        '2a86e9fc098967802cd73fe4390df7013af52358ca1e4e74219631a3c436fdeb',
+        senderPubkey
     ]
 
     for (let i in registeredSenderPubs) {
