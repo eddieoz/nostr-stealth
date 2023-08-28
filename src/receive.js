@@ -70,7 +70,7 @@ let channelPubkey = process.env.CHANPUB
 
 // connect to relay and subscribe to events
 let sub = await relay.sub([{
-    kinds: [31337],
+    kinds: [1337],
     "#p": [channelPubkey]
 }])
 

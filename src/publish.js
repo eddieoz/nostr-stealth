@@ -75,9 +75,9 @@ let stealth_event = {
 // Encrypt the stealth_event using the 'nip04' module
 let ciphertext2 = await nip04.encrypt(senderPrivkey, receiverPubkey, JSON.stringify(stealth_event))
 
-// Create an event object kind 31337
+// Create an event object kind 1337
 let event = {
-    kind: 31337,
+    kind: 1337,
     pubkey: ephemeralPubkey,
     tags: [['p', channelPubkey]],
     content: ciphertext2,
