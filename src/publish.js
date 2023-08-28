@@ -16,7 +16,7 @@ import * as crypto from "crypto";
 globalThis.crypto = crypto;
 
 // Initialize a relay object by calling the 'relayInit' function and passing the WebSocket URL as a parameter
-const relay = relayInit('wss://wallet.sats4.life/nostrrelay/mix')
+const relay = relayInit(process.env.RELAY)
 
 // Register an event listener for the 'connect' event of the relay object
 relay.on('connect', () => {
@@ -56,9 +56,6 @@ if (process.argv.length <= 2) {
   
   // Get the message from the command line argument
   const message = process.argv[2];
-  
-  // Print the received message
-  console.log("Received message:", message);
 
 // Encrypt the message using the 'nip04' module
 let ciphertext1 = await nip04.encrypt(senderPrivkey, receiverPubkey, message)
@@ -89,6 +86,7 @@ event.id = getEventHash(event)
 event.sig = getSignature(event, ephemeralPrivkey)
 
 // Publish the event using the 'publish' method of the relay object
+console.log("Sending message:", message);
 let pub = relay.publish(event)
 pub.on('ok', () => {
     console.log(`${relay.url} has accepted our event`)

@@ -49,7 +49,8 @@ function getNormalizedX(key) {
 }
 
 // Initialize a relay object by calling the 'relayInit' function and passing the WebSocket URL as a parameter
-const relay = relayInit('wss://wallet.sats4.life/nostrrelay/mix')
+const relay = relayInit(process.env.RELAY)
+
 relay.on('connect', () => {
     console.log(`connected to ${relay.url}`)
 })

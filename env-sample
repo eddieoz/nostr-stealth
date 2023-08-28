@@ -6,3 +6,5 @@ RPUB=""
 
 CHANPRIV="(optional)"
 CHANPUB=""
+
+RELAY=""
