@@ -1,10 +1,10 @@
-SPRIV=""
-SPUB=""
+SPRIV="insert-sender-private-key-in-hex-format"
+SPUB="insert-sender-public-key-in-hex-format"
 
-RPRIV=""
-RPUB=""
+RPRIV="insert-receiver-private-key-in-hex-format"
+RPUB="insert-receiver-public-key-in-hex-format"
 
 CHANPRIV="(optional)"
-CHANPUB=""
+CHANPUB="insert-channel-public-key-in-hex-format"
 
-RELAY=""
+RELAY="insert-relay-address"

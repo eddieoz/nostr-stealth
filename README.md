@@ -33,20 +33,49 @@ Nostr-Stealth is a cutting-edge encryption method built on top of the Nostr prot
    ```
 
 ## Usage
+1. **Preparation**:
+   - Copy `env-sample` to `.env`
+   - Add private and public keys for the sender, receiver and channel in `hex` format.
+     - The channel privkey is optional for this example
+   - Add a relay address
 
-1. **Set Up Channel**:
+2. **Set Up Channel**:
    - The channel is a valid public key. Create a pair of valid keys and update .env (CHANPRIV is optional, because it can't decrypt messages)
 
-2. **Sending Messages**:
+3. **Sending Messages**:
    - $ node publish.js "your-message"
    - Write your message and hit send. Your metadata will be encrypted and mixed with others in the channel.
 
-1. **Receiving Messages**:
+4. **Receiving Messages**:
    - node receive.js
    - The last message for you within the channel will be displayed.
 
-2. **Note**: For best security practices, it's recommended to regularly switch channels.
+5. **Note**: For best security practices, it's recommended to regularly switch channels.
 
+## Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    Actor A
+    Participant C as Channel
+    Actor B
+    note over A,B: share the Channel pub
+    note over A,B: share and register Apub, Bpub
+    note left of A: create ephemeral keys
+    note left of A: encrypt(Apriv, Bpub, message)
+    note left of A: create event kind 4
+    note left of A: encrypt (Apriv, Bpub, json(event))
+    note left of A: create event kind 1337
+    note left of A: getSignature(event1337, ephemeralPrivkey)
+    note left of A: relay.publish(event1337)
+    A->>C:send event to channel
+    C-->>A:successful
+    B-->>C:monitor events kind 1337
+    C->>B:new message
+    note right of B: Tests decryption of a message for [Apub,...]
+    note right of B: (success) decrypt kind 4 event 
+    note right of B: manage kind 4 event
+```
 ## Security Precautions
 
 - While NostrStealth enhances metadata security, always ensure you're on a secure and trusted network when communicating. Use VPN or Tor to obfuscate your IP address.
