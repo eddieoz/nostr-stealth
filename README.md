@@ -19,7 +19,7 @@ Nostr-Stealth is a cutting-edge encryption method built on top of the Nostr prot
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/[Your-Repo-Name]/Nostr-Stealth.git
+   git clone https://github.com/eddieoz/nostr-stealth.git
    ```
 
 2. Navigate to the project directory:
